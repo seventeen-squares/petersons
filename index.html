@@ -94,25 +94,39 @@
         .hero {
             background: linear-gradient(135deg, var(--primary-gold), #f9d71c);
             padding: 4rem 2rem;
-            text-align: center;
             color: var(--primary-blue);
         }
 
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .hero h1 {
+        .hero-content {
+            text-align: left;
+        }
+
+        .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             font-weight: bold;
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             font-weight: 500;
+        }
+
+        .hero-booking {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .cta-button {
@@ -344,6 +358,91 @@
             margin-bottom: 1rem;
         }
 
+        /* Reviews Section */
+        .reviews-section {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-stars {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: var(--dark-gray);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Chauffeur Section */
+        .chauffeur-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .chauffeur-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .chauffeur-section h2 {
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .chauffeur-icon {
+            font-size: 4rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .chauffeur-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .chauffeur-feature {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .chauffeur-feature h4 {
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
         /* Footer */
         .footer {
             background: var(--primary-blue);
@@ -417,11 +516,16 @@
                 display: none;
             }
 
-            .hero h1 {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .hero p {
+            .hero-content p {
                 font-size: 1.2rem;
             }
 
@@ -434,6 +538,14 @@
             }
 
             .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chauffeur-features {
                 grid-template-columns: 1fr;
             }
         }
@@ -466,6 +578,7 @@
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#fleet">Our Fleet</a></li>
+                    <li><a href="#chauffeur">Chauffeur Service</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -476,18 +589,15 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container animate-fade-in">
-            <h1>Your Journey Begins with Peterson's</h1>
-            <p>Premium car rentals for every adventure - reliable, affordable, and ready when you are!</p>
-            <a href="#booking" class="cta-button">Book Now</a>
-            <a href="#fleet" class="cta-button secondary">View Fleet</a>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking" class="booking-section">
-        <div class="booking-container">
-            <div class="booking-form animate-fade-in">
-                <h2 class="booking-title">Get Your Quote Today</h2>
+            <div class="hero-content">
+                <h1>Your Journey Begins with Peterson's</h1>
+                <p>Premium car rentals for every adventure - reliable, affordable, and ready when you are!</p>
+                <a href="#fleet" class="cta-button">View Fleet</a>
+                <a href="#chauffeur" class="cta-button secondary">Chauffeur Service</a>
+            </div>
+            
+            <div class="hero-booking">
+                <h3 style="color: var(--primary-blue); text-align: center; margin-bottom: 1.5rem;">Get Your Quote Today</h3>
                 <form id="quoteForm">
                     <div class="form-row">
                         <div class="form-group">
@@ -521,20 +631,16 @@
                                 <option value="intermediate">Intermediate Car</option>
                                 <option value="standard">Standard Car</option>
                                 <option value="full-size">Full-size Car</option>
-                                <option value="luxury">Luxury Car</option>
                                 <option value="suv">SUV</option>
                                 <option value="bakkie">Bakkie/Pickup</option>
                                 <option value="minibus">Minibus</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="driverAge">Driver Age</label>
-                            <select id="driverAge" name="driverAge" required>
-                                <option value="">Select age range</option>
-                                <option value="21-24">21-24 years</option>
-                                <option value="25-29">25-29 years</option>
-                                <option value="30-64">30-64 years</option>
-                                <option value="65+">65+ years</option>
+                            <label for="driverNeeded">Driver Required?</label>
+                            <select id="driverNeeded" name="driverNeeded" required>
+                                <option value="no">No, I'll drive myself</option>
+                                <option value="yes">Yes, I need a chauffeur</option>
                             </select>
                         </div>
                     </div>
@@ -558,6 +664,128 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="section-container">
+            <h2 class="section-title animate-fade-in">What Our Clients Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card animate-fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Excellent service! The car was clean, well-maintained, and the staff was very professional. Peterson's made our family trip to Lake Malawi absolutely perfect."</p>
+                    <p class="review-author">- Sarah Mwanza</p>
+                </div>
+
+                <div class="review-card animate-fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Outstanding chauffeur service for our business meetings. The driver was punctual, courteous, and knew all the best routes in Blantyre. Highly recommend!"</p>
+                    <p class="review-author">- James Banda</p>
+                </div>
+
+                <div class="review-card animate-fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Great value for money! The SUV we rented was perfect for our safari trip. Peterson's staff handled everything smoothly from pickup to drop-off."</p>
+                    <p class="review-author">- Maria Phiri</p>
+                </div>
+
+                <div class="review-card animate-fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Reliable and trustworthy service. I've been using Peterson's for my business trips for over 2 years. Always on time, always professional."</p>
+                    <p class="review-author">- David Tembo</p>
+                </div>
+
+                <div class="review-card animate-fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The minibus rental for our wedding was perfect! Clean, spacious, and the driver was very helpful with our guests. Thank you Peterson's!"</p>
+                    <p class="review-author">- Grace Nyirenda</p>
+                </div>
+
+                <div class="review-card animate-fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Excellent customer service! When we had a minor issue with our rental, Peterson's team resolved it immediately. True professionals!"</p>
+                    <p class="review-author">- Peter Kachale</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chauffeur Service Section -->
+    <section id="chauffeur" class="chauffeur-section">
+        <div class="section-container">
+            <div class="chauffeur-content animate-fade-in">
+                <div class="chauffeur-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h2>Professional Chauffeur Service</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Need a professional driver? Our experienced chauffeurs are available to make your journey comfortable and stress-free.
+                    Perfect for business meetings, airport transfers, special events, or when you simply want to relax and enjoy the ride.
+                </p>
+                
+                <div class="chauffeur-features">
+                    <div class="chauffeur-feature">
+                        <h4><i class="fas fa-check-circle" style="color: var(--primary-gold); margin-right: 0.5rem;"></i>Professional Drivers</h4>
+                        <p>Licensed, experienced, and courteous drivers who know Malawi's roads well.</p>
+                    </div>
+                    
+                    <div class="chauffeur-feature">
+                        <h4><i class="fas fa-clock" style="color: var(--primary-gold); margin-right: 0.5rem;"></i>Punctual Service</h4>
+                        <p>Always on time for your appointments, meetings, and scheduled pickups.</p>
+                    </div>
+                    
+                    <div class="chauffeur-feature">
+                        <h4><i class="fas fa-route" style="color: var(--primary-gold); margin-right: 0.5rem;"></i>Local Expertise</h4>
+                        <p>Our drivers know the best routes and can provide local recommendations.</p>
+                    </div>
+                    
+                    <div class="chauffeur-feature">
+                        <h4><i class="fas fa-money-bill-wave" style="color: var(--primary-gold); margin-right: 0.5rem;"></i>Driver's Allowance</h4>
+                        <p>Additional fee applies for driver services - includes meals and accommodation for multi-day trips.</p>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 2rem; font-size: 1.1rem;">
+                    <strong>Contact us for chauffeur rates and availability.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Fleet Section -->
     <section id="fleet" class="fleet-section">
         <div class="section-container">
@@ -575,7 +803,7 @@
                         <li><i class="fas fa-check"></i> 4-5 seats</li>
                         <li><i class="fas fa-check"></i> Excellent fuel economy</li>
                     </ul>
-                    <div class="fleet-price">From MK 15,000/day</div>
+                    <div class="fleet-price">From MK 45,000/day</div>
                     <p><strong>Models:</strong> Toyota Yaris, Hyundai i20, Nissan Micra</p>
                 </div>
 
@@ -591,7 +819,7 @@
                         <li><i class="fas fa-check"></i> 5 seats</li>
                         <li><i class="fas fa-check"></i> Larger boot space</li>
                     </ul>
-                    <div class="fleet-price">From MK 21,000/day</div>
+                    <div class="fleet-price">From MK 55,000/day</div>
                     <p><strong>Models:</strong> Toyota Corolla, VW Polo Vivo, Hyundai Accent</p>
                 </div>
 
@@ -607,24 +835,8 @@
                         <li><i class="fas fa-check"></i> 5 seats with extra legroom</li>
                         <li><i class="fas fa-check"></i> Advanced safety features</li>
                     </ul>
-                    <div class="fleet-price">From MK 27,000/day</div>
+                    <div class="fleet-price">From MK 65,000/day</div>
                     <p><strong>Models:</strong> Toyota Camry, Honda Accord, Hyundai Elantra</p>
-                </div>
-
-                <div class="fleet-card animate-fade-in">
-                    <div class="fleet-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Luxury Vehicles</h3>
-                    <p>Premium vehicles for special occasions, business trips, and ultimate comfort.</p>
-                    <ul class="fleet-features">
-                        <li><i class="fas fa-check"></i> Luxury interior</li>
-                        <li><i class="fas fa-check"></i> Premium sound system</li>
-                        <li><i class="fas fa-check"></i> Leather seats</li>
-                        <li><i class="fas fa-check"></i> Advanced technology</li>
-                    </ul>
-                    <div class="fleet-price">From MK 48,000/day</div>
-                    <p><strong>Models:</strong> BMW 3 Series, Mercedes C-Class, Audi A4</p>
                 </div>
 
                 <div class="fleet-card animate-fade-in">
@@ -639,7 +851,7 @@
                         <li><i class="fas fa-check"></i> Cargo space</li>
                         <li><i class="fas fa-check"></i> 5-7 seats</li>
                     </ul>
-                    <div class="fleet-price">From MK 39,000/day</div>
+                    <div class="fleet-price">From MK 120,000/day</div>
                     <p><strong>Models:</strong> Toyota Hilux, Ford Ranger, Hyundai Creta</p>
                 </div>
 
@@ -655,7 +867,7 @@
                         <li><i class="fas fa-check"></i> Ample luggage space</li>
                         <li><i class="fas fa-check"></i> Comfortable seating</li>
                     </ul>
-                    <div class="fleet-price">From MK 57,000/day</div>
+                    <div class="fleet-price">From MK 180,000/day</div>
                     <p><strong>Models:</strong> Toyota Quantum, Ford Transit, Hyundai H1</p>
                 </div>
             </div>
@@ -679,8 +891,8 @@
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Comprehensive Insurance</h3>
-                    <p>Full coverage insurance options to give you peace of mind during your rental period.</p>
+                    <h3>3rd Party Insurance</h3>
+                    <p>Third-party insurance coverage included to protect you during your rental period.</p>
                 </div>
 
                 <div class="service-card animate-fade-in">
@@ -740,7 +952,8 @@
                     <p><i class="fas fa-phone"></i> +265 (0) 882 797 900</p>
                     <p><i class="fas fa-map-marker-alt"></i> 17 Moir Crescent RD, Kristwick, Blantyre</p>
                     <p><i class="fas fa-envelope-open"></i> P.O Box 908, Blantyre</p>
-                    <p><i class="fas fa-clock"></i> Mon-Sun: 8:00 AM - 8:00 PM</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-clock"></i> Sat-Sun: 8:30 AM - 4:00 PM</p>
                 </div>
 
                 <div class="footer-section">
@@ -793,7 +1006,7 @@ RENTAL DETAILS:
 • Pick-up Location: ${formData.get('pickupLocation')}
 • Drop-off Location: ${formData.get('dropoffLocation')}
 • Vehicle Type: ${formData.get('carType')}
-• Driver Age: ${formData.get('driverAge')}
+• Driver Required: ${formData.get('driverNeeded')}
 
 CUSTOMER INFORMATION:
 • Name: ${formData.get('customerName')}
@@ -801,7 +1014,8 @@ CUSTOMER INFORMATION:
 
 Please provide me with a detailed quote including:
 - Daily/total rental rate
-- Insurance options
+- Insurance coverage (3rd Party)
+- Driver's allowance (if applicable)
 - Any additional fees
 - Terms and conditions
 - Availability confirmation
