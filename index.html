@@ -494,6 +494,57 @@
             color: #b8c5d1;
         }
 
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-icons img {
+            height: 30px;
+            width: auto;
+            background: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .payment-icons img:hover {
+            transform: scale(1.05);
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .security-badges img {
+            height: 35px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .payment-icons {
+                gap: 0.5rem;
+            }
+            
+            .payment-icons img {
+                height: 25px;
+                padding: 3px 5px;
+            }
+            
+            .security-badges img {
+                height: 30px;
+            }
+        }
+
         .social-icons {
             display: flex;
             gap: 1rem;
@@ -944,18 +995,18 @@
 
                 <div class="service-card animate-fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-route"></i>
                     </div>
-                    <h3>3rd Party Insurance</h3>
-                    <p>Third-party insurance coverage included to protect you during your rental period.</p>
+                    <h3>Tour Services</h3>
+                    <p>Explore Malawi's beautiful destinations with our guided tour services and customized travel packages.</p>
                 </div>
 
                 <div class="service-card animate-fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-plane"></i>
                     </div>
-                    <h3>Multiple Locations</h3>
-                    <p>Convenient pickup and drop-off locations across major cities and airports.</p>
+                    <h3>Airport Transfers</h3>
+                    <p>Reliable airport pickup and drop-off services. Start and end your journey stress-free with our punctual transfers.</p>
                 </div>
 
                 <div class="service-card animate-fade-in">
@@ -1037,6 +1088,26 @@
             </div>
             
             <div class="footer-bottom">
+                <!-- Payment Methods -->
+                <div class="payment-icons">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/visa.svg" alt="Visa" style="filter: invert(0);">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mastercard.svg" alt="Mastercard" style="filter: invert(0);">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/americanexpress.svg" alt="American Express" style="filter: invert(0);">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/paypal.svg" alt="PayPal" style="filter: invert(0);">
+                </div>
+                
+                <!-- Security Badges -->
+                <div class="security-badges">
+                    <div style="background: white; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; gap: 5px;">
+                        <i class="fas fa-lock" style="color: #4CAF50;"></i>
+                        <span style="color: #333; font-size: 12px; font-weight: bold;">SECURED BY<br>SSL</span>
+                    </div>
+                    <div style="background: white; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; gap: 5px;">
+                        <i class="fas fa-shield-alt" style="color: #2196F3;"></i>
+                        <span style="color: #333; font-size: 12px; font-weight: bold;">PCI<br>COMPLIANT</span>
+                    </div>
+                </div>
+                
                 <p>&copy; 2025 Peterson's Car Rental. All rights reserved.</p>
             </div>
         </div>
