@@ -271,10 +271,11 @@
         .fleet-card {
             background: var(--white);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 0;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
         }
 
         .fleet-card:hover {
@@ -282,10 +283,125 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        .fleet-card-header {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .fleet-card-content {
+            padding: 2rem;
+        }
+
+        .car-header {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+        }
+
+        .car-carousel {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .car-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .car-slide img {
+            max-width: 90%;
+            max-height: 160px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .car-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(30, 74, 114, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(244, 197, 66, 0.8);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: var(--primary-gold);
+        }
+
+        .carousel-nav.prev {
+            left: 10px;
+        }
+
+        .carousel-nav.next {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-gold);
+        }
+
+        .fleet-content {
+            padding: 2rem;
+        }
+
         .fleet-icon {
             font-size: 3rem;
             color: var(--primary-gold);
             margin-bottom: 1rem;
+            display: none; /* Hide icons since we're using car images */
         }
 
         .fleet-card h3 {
@@ -875,83 +991,103 @@
             <h2 class="section-title animate-fade-in">Our Premium Fleet</h2>
             <div class="fleet-grid">
                 <div class="fleet-card animate-fade-in">
-                    <div class="fleet-icon">
-                        <i class="fas fa-car"></i>
+                    <div class="fleet-card-header" style="background-image: url('cars/march.jpeg');">
                     </div>
-                    <h3>Economy Cars</h3>
-                    <p>Perfect for city driving and budget-conscious travelers. Fuel-efficient and easy to park.</p>
-                    <ul class="fleet-features">
-                        <li><i class="fas fa-check"></i> Manual/Automatic transmission</li>
-                        <li><i class="fas fa-check"></i> Air conditioning</li>
-                        <li><i class="fas fa-check"></i> 4-5 seats</li>
-                        <li><i class="fas fa-check"></i> Excellent fuel economy</li>
-                    </ul>
-                    <div class="fleet-price">From MK 45,000/day</div>
-                    <p><strong>Models:</strong> Mitsubishi Mirage, Nissan March</p>
+                    <div class="fleet-card-content">
+                        <div class="fleet-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Economy Cars</h3>
+                        <p>Perfect for city driving and budget-conscious travelers. Fuel-efficient and easy to park.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check"></i> Manual/Automatic transmission</li>
+                            <li><i class="fas fa-check"></i> Air conditioning</li>
+                            <li><i class="fas fa-check"></i> 4-5 seats</li>
+                            <li><i class="fas fa-check"></i> Excellent fuel economy</li>
+                        </ul>
+                        <div class="fleet-price">From MK 45,000/day</div>
+                        <p><strong>Models:</strong> Mitsubishi Mirage, Nissan March</p>
+                    </div>
                 </div>
 
                 <div class="fleet-card animate-fade-in">
-                    <div class="fleet-icon">
-                        <i class="fas fa-car-side"></i>
+                    <div class="fleet-card-header" style="background-image: url('cars/verisa.png');">
                     </div>
-                    <h3>Compact & Intermediate</h3>
-                    <p>Ideal balance of comfort, space, and efficiency for medium-distance travel.</p>
-                    <ul class="fleet-features">
-                        <li><i class="fas fa-check"></i> Automatic transmission</li>
-                        <li><i class="fas fa-check"></i> Climate control</li>
-                        <li><i class="fas fa-check"></i> 5 seats</li>
-                        <li><i class="fas fa-check"></i> Larger boot space</li>
-                    </ul>
-                    <div class="fleet-price">From MK 55,000/day</div>
-                    <p><strong>Models:</strong> Mazda Verisa, Mazda Demio, Suzuki Swift, Honda Fit</p>
+                    <div class="fleet-card-content">
+                        <div class="fleet-icon">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <h3>Compact & Intermediate</h3>
+                        <p>Ideal balance of comfort, space, and efficiency for medium-distance travel.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check"></i> Automatic transmission</li>
+                            <li><i class="fas fa-check"></i> Climate control</li>
+                            <li><i class="fas fa-check"></i> 5 seats</li>
+                            <li><i class="fas fa-check"></i> Larger boot space</li>
+                        </ul>
+                        <div class="fleet-price">From MK 55,000/day</div>
+                        <p><strong>Models:</strong> Mazda Verisa, Mazda Demio, Suzuki Swift, Honda Fit</p>
+                    </div>
                 </div>
 
                 <div class="fleet-card animate-fade-in">
-                    <div class="fleet-icon">
-                        <i class="fas fa-car-alt"></i>
+                    <div class="fleet-card-header" style="background-image: url('cars/axio.jpg');">
                     </div>
-                    <h3>Standard & Full-size</h3>
-                    <p>Spacious and comfortable vehicles perfect for families and longer journeys.</p>
-                    <ul class="fleet-features">
-                        <li><i class="fas fa-check"></i> Automatic transmission</li>
-                        <li><i class="fas fa-check"></i> Premium interior</li>
-                        <li><i class="fas fa-check"></i> 5 seats with extra legroom</li>
-                        <li><i class="fas fa-check"></i> Advanced safety features</li>
-                    </ul>
-                    <div class="fleet-price">From MK 65,000/day</div>
-                    <p><strong>Models:</strong> Toyota Ractis, Toyota Axio, Mazda Axela</p>
+                    <div class="fleet-card-content">
+                        <div class="fleet-icon">
+                            <i class="fas fa-car-alt"></i>
+                        </div>
+                        <h3>Standard & Full-size</h3>
+                        <p>Spacious and comfortable vehicles perfect for families and longer journeys.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check"></i> Automatic transmission</li>
+                            <li><i class="fas fa-check"></i> Premium interior</li>
+                            <li><i class="fas fa-check"></i> 5 seats with extra legroom</li>
+                            <li><i class="fas fa-check"></i> Advanced safety features</li>
+                        </ul>
+                        <div class="fleet-price">From MK 65,000/day</div>
+                        <p><strong>Models:</strong> Toyota Ractis, Toyota Axio, Mazda Axela</p>
+                    </div>
                 </div>
 
                 <div class="fleet-card animate-fade-in">
-                    <div class="fleet-icon">
-                        <i class="fas fa-truck"></i>
+                    <div class="fleet-card-header" style="background-image: url('cars/xtrail.avif');">
                     </div>
-                    <h3>SUVs</h3>
-                    <p>Robust vehicles perfect for adventure, cargo transport, and off-road capabilities.</p>
-                    <ul class="fleet-features">
-                        <li><i class="fas fa-check"></i> 4x4 capability</li>
-                        <li><i class="fas fa-check"></i> High ground clearance</li>
-                        <li><i class="fas fa-check"></i> Cargo space</li>
-                        <li><i class="fas fa-check"></i> 5-7 seats</li>
-                    </ul>
-                    <div class="fleet-price">From MK 120,000/day</div>
-                    <p><strong>Models:</strong> Nissan Xtrail, Toyota Fortuner, Toyota Hilux, Ford Ranger</p>
+                    <div class="fleet-card-content">
+                        <div class="fleet-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>SUVs</h3>
+                        <p>Robust vehicles perfect for adventure, cargo transport, and off-road capabilities.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check"></i> 4x4 capability</li>
+                            <li><i class="fas fa-check"></i> High ground clearance</li>
+                            <li><i class="fas fa-check"></i> Cargo space</li>
+                            <li><i class="fas fa-check"></i> 5-7 seats</li>
+                        </ul>
+                        <div class="fleet-price">From MK 120,000/day</div>
+                        <p><strong>Models:</strong> Nissan Xtrail, Toyota Fortuner, Toyota Hilux, Ford Ranger</p>
+                    </div>
                 </div>
 
                 <div class="fleet-card animate-fade-in">
-                    <div class="fleet-icon">
-                        <i class="fas fa-bus"></i>
+                    <div class="fleet-card-header" style="background-image: url('cars/quantum.webp');">
                     </div>
-                    <h3>Minibuses & Vans</h3>
-                    <p>Perfect for large groups, family trips, and corporate transport needs.</p>
-                    <ul class="fleet-features">
-                        <li><i class="fas fa-check"></i> 8-14 passenger capacity</li>
-                        <li><i class="fas fa-check"></i> Air conditioning</li>
-                        <li><i class="fas fa-check"></i> Ample luggage space</li>
-                        <li><i class="fas fa-check"></i> Comfortable seating</li>
-                    </ul>
-                    <div class="fleet-price">From MK 180,000/day</div>
-                    <p><strong>Models:</strong> Toyota Quantum, Toyota Voxy, Honda Freed</p>
+                    <div class="fleet-card-content">
+                        <div class="fleet-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <h3>Minibuses & Vans</h3>
+                        <p>Perfect for large groups, family trips, and corporate transport needs.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check"></i> 8-14 passenger capacity</li>
+                            <li><i class="fas fa-check"></i> Air conditioning</li>
+                            <li><i class="fas fa-check"></i> Ample luggage space</li>
+                            <li><i class="fas fa-check"></i> Comfortable seating</li>
+                        </ul>
+                        <div class="fleet-price">From MK 180,000/day</div>
+                        <p><strong>Models:</strong> Toyota Quantum, Toyota Voxy, Honda Freed</p>
+                    </div>
                 </div>
             </div>
         </div>
